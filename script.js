@@ -1,9 +1,9 @@
 const video=document.getElementById("video")
 Promise.all(
     [
-        faceapi.nets.tinyFaceDetector.loadFromUri("models"),     
-         faceapi.nets.faceLandmark68Net.loadFromUri("models"),     
-         faceapi.nets.faceExpressionNet.loadFromUri("models")
+        faceapi.nets.tinyFaceDetector.loadFromUri('model/tiny_face_detector_model'),
+         faceapi.nets.faceLandmark68Net.loadFromUri('model/face_landmark_68_model'),     
+         faceapi.nets.faceExpressionNet.loadFromUri('model/face_expression_model')
     ]
 ).then(startVideo);
 
@@ -13,16 +13,19 @@ function startVideo()
     navigator.mediaDevices.getUserMedia({video:{}})
     .then((stream)=>{
         video.srcObject=stream;
-
+        video.onloadedmetadata = () => {
+        video.play();
+         console.log("🎥 Camera started");
+        };
     })
 
-    .catch((err)=>console.log("camera error:",err));
+    .catch((err)=>console.error("❌ Camera error:", err));
 }
 video.addEventListener("play",()=>{
     const canvas=faceapi.createCanvasFromMedia(video);
     document.body.append(canvas);
 
-    const displaySize={width:video.width,height:video.height};
+    const displaySize={width:video.videoWidth,height:video.videoHeight};
     faceapi.matchDimensions(canvas,displaySize);
 
 
