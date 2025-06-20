@@ -1,0 +1,24 @@
+*{
+    margin:0;
+    padding:0;
+}
+#detect{
+       color:rgb(16, 112, 167);
+       text-align:center;
+
+}
+#video{
+    height:550px;
+    width:730px;
+}
+ body {
+      text-align: center;
+      background: #f8f9fa;
+      font-family: Arial, sans-serif;
+    }
+ video, canvas {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 80px;
+    }
