@@ -17,3 +17,7 @@ This project is a simple **Smile Detection Web App** built using **face-api.js**
 
 
 
+
+
+https://github.com/user-attachments/assets/2d0c8a98-08ad-4fae-b2d6-f10c483c73bd
+
